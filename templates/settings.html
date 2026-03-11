@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Settings</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body class="bg-neon">
+  <div class="top-bar">
+    <button class="back" onclick="location.href='/home'">⟵ Home</button>
+    <div class="title">Settings</div>
+    <div class="spacer"></div>
+  </div>
+
+  <main class="settings-card neon">
+    <div class="setting-row">
+      <label>Music</label>
+      <select id="musicSel">
+        <option value="on">On</option>
+        <option value="off">Off</option>
+      </select>
+    </div>
+    <div class="setting-row">
+      <label>Privacy</label>
+      <button onclick="showPrivacy()">View Privacy</button>
+    </div>
+    <div class="setting-row">
+      <label>Support</label>
+      <button onclick="showSupport()">Contact Support</button>
+    </div>
+  </main>
+
+<script>
+async function showPrivacy(){ alert("Privacy: This demo stores only simple game progress locally on the server file."); }
+async function showSupport(){ alert("Support: For demo, email dev@example.com"); }
+
+(async ()=>{
+  const res = await fetch('/api/me');
+  if(res.ok){
+    const d = await res.json();
+    if(d.settings && d.settings.music) document.getElementById('musicSel').value = d.settings.music;
+  }
+})();
+
+document.getElementById('musicSel').addEventListener('change', async(e)=>{
+  await fetch('/api/settings', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({music:e.target.value}) });
+  alert('Saved');
+});
+</script>
+</body></html>

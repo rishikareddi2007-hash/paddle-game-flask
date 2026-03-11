@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Login - Paddle Quest</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body class="bg-neon">
+  <main class="menu-card neon">
+    <h1 class="glow-title">PADDLE QUEST</h1>
+    <div style="width:100%;max-width:520px">
+      <label style="display:block;margin-bottom:8px;font-weight:700">Enter Username</label>
+      <input id="username" placeholder="yourname" style="width:100%;padding:12px;border-radius:10px;border:none;margin-bottom:12px;font-size:16px" />
+      <div style="display:flex;gap:12px;justify-content:center">
+        <button class="neon-btn" onclick="login()">Continue</button>
+      </div>
+      <p style="opacity:0.8;margin-top:12px;font-size:13px">Progress saved by username.</p>
+    </div>
+  </main>
+<script>
+async function login(){
+  const u = document.getElementById('username').value.trim();
+  if(!u) return alert('Enter a username');
+  const res = await fetch('/api/login', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({username: u})});
+  const d = await res.json();
+  if(d.ok) window.location.href = '/home';
+  else alert(d.error || 'Login failed');
+}
+</script>
+</body></html>

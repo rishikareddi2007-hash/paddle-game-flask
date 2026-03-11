@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Levels - Paddle Quest</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body class="bg-neon">
+  <div class="top-bar">
+    <button class="back" onclick="location.href='/home'">⟵ Home</button>
+    <div class="title">Levels</div>
+    <div class="spacer"></div>
+  </div>
+  <main class="levels-container">
+    <div id="levelsGrid" class="levels-grid"></div>
+  </main>
+<script src="{{ url_for('static', filename='levels.js') }}"></script>
+</body></html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Game - Paddle Quest</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body class="bg-game">
+  <div class="top-bar">
+    <button class="back" onclick="location.href='/home'">⟵ Home</button>
+    <div class="title" id="levelTitle">Level</div>
+    <div class="spacer"></div>
+  </div>
+  <main class="game-area">
+    <canvas id="gameCanvas"></canvas>
+    <div class="game-footer">
+      <div class="info">Coins: <span id="gameCoins">0</span></div>
+      <div class="info">Lives: <span id="gameLives">0</span></div>
+      <div class="info">Score: <span id="gameScore">0</span></div>
+    </div>
+  </main>
+<script src="{{ url_for('static', filename='game.js') }}"></script>
+</body></html>

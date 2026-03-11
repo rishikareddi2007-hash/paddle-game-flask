@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Home - Paddle Quest</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body class="bg-neon">
+  <div class="top-bar">
+    <div class="coins">💰 <span id="coins">0</span></div>
+    <div class="lives">❤️ <span id="lives">0</span></div>
+    <div style="margin-left:auto;display:flex;gap:8px">
+      <button class="back" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <main class="menu-card neon animated-menu">
+    <h1 class="glow-title">PADDLE QUEST</h1>
+    <div class="big-buttons">
+      <button class="neon-btn pulse" onclick="location.href='/levels'">LEVELS</button>
+      <button class="neon-btn pulse large" onclick="location.href='/game?level=1'">PLAY</button>
+      <button class="neon-btn pulse" onclick="showHighScores()">HIGH SCORES</button>
+      <button class="neon-btn pulse" onclick="location.href='/settings'">SETTINGS</button>
+      <button class="neon-btn pulse" onclick="showSupport()">SUPPORT</button>
+    </div>
+    <div id="extra" class="extra-panel"></div>
+  </main>
+
+<script src="{{ url_for('static', filename='home.js') }}"></script>
+</body></html>
